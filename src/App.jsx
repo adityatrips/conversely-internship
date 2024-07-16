@@ -74,17 +74,13 @@ const App = () => {
 
 	return (
 		<>
-			<h1 className='text-center font-bold uppercase text-2xl pt-10 h-10'>
-				Conversely Internship
-			</h1>
-			<button
-				className='fixed top-5 right-5 font-bold uppercase bg-secondary text-white p-2 px-4 rounded-xl transition-all duration-200 select-none'
-				onClick={changeTheme}
-			>
-				Change Theme
-			</button>
+			<div className='flex flex-col px-10'>
+				<h1 className='text-center font-bold uppercase text-2xl pt-10 h-10'>
+					Conversely Internship
+				</h1>
+			</div>
 			<div className='w-screen h-[calc(100vh-5rem)] flex justify-center items-center'>
-				<div className='grid grid-cols-3 gap-5'>
+				<div className='grid grid-cols-3 gap-2'>
 					{matrix.map((item) => (
 						<div
 							id={`box-${item.id}`}
@@ -106,19 +102,27 @@ const App = () => {
 					))}
 				</div>
 			</div>
-			<div className='flex justify-between items-center h-10 w-screen px-10 pb-10'>
-				<h1 className='font-bold uppercase'>
-					Clicked Boxes (press respective number):&nbsp;
-					{clickedBoxes.map((box) => box.split('-')[1]).join(', ')}
-				</h1>
-				<button
-					onClick={() => {
-						setClickedBoxes([]);
-					}}
-					className='bottom-5 right-5 font-bold uppercase bg-red-900 text-red-100 p-2 px-4 rounded-xl transition-all duration-200 select-none'
-				>
-					Reset (press &apos;r&apos;)
-				</button>
+			<div className='fixed w-full bottom-5 px-10'>
+				<div className='flex gap-1 mx-auto md:w-2/5 flex-col items-stretch justify-center'>
+					<h1 className='font-bold uppercase text-center'>
+						Clicked Boxes (press respective number):&nbsp;
+						{clickedBoxes.map((box) => box.split('-')[1]).join(', ')}
+					</h1>
+					<button
+						onClick={() => {
+							setClickedBoxes([]);
+						}}
+						className='bottom-5 right-5 font-bold uppercase bg-red-900 text-red-100 p-2 px-4 text-xs rounded-xl transition-all duration-200 select-none'
+					>
+						Reset (press &apos;r&apos;)
+					</button>
+					<button
+						className='font-bold uppercase bg-secondary text-xs text-white p-2 px-4 rounded-xl transition-all duration-200 select-none'
+						onClick={changeTheme}
+					>
+						Change Theme
+					</button>
+				</div>
 			</div>
 		</>
 	);
